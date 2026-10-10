@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomáš Mojžiš - Schedule</title>
+    <link rel="icon" type="image/jpeg" href="../img/pfp.jpg">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .schedule-filters {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .schedule-filters button {
+            padding: 10px 16px;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .schedule-filters .is-active {
+            background: #0052ff;
+            color: white;
+        }
+
+        .schedule-scroll {
+            overflow-x: auto;
+            margin-bottom: 32px;
+        }
+
+        .schedule {
+            width: 100%;
+            min-width: 1100px;
+            table-layout: fixed;
+            border-collapse: collapse;
+        }
+
+        .schedule caption {
+            margin-bottom: 12px;
+            text-align: left;
+        }
+
+        .schedule th, .schedule td {
+            border: 1px solid #aaa;
+            padding: 12px 4px;
+            text-align: center;
+            overflow-wrap: break-word;
+        }
+
+        .schedule th {
+            background: #f0f0f0;
+            font-size: 12px;
+        }
+
+        .lecture { background: #dce8ff; }
+        .exercise { background: #dff3df; }
+        .sport { background: #fff0c2; }
+        .is-current { outline: 3px solid #d7284d; outline-offset: -3px; font-weight: 700; }
+
+        .schedule-status { margin: 0 0 16px; }
+
+        /* Bunka zostane na mieste, aby sa neposunuli časy predmetov. */
+        .filtered-out { background: transparent; }
+        .filtered-out span { visibility: hidden; }
+
+        .semester-progress label { display: block; }
+        .semester-progress progress {
+            width: 100%;
+            max-width: 500px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="../index.html"><img src="../img/pfp.jpg"><span>Tomáš Mojžiš</span><small class="header-subtitle">študent FEI</small></a></h1>
+            <label class="hamburger">
+                <input type="checkbox">
+                <span aria-hidden="true">&#9776;</span>
+            </label>
+            <ul class="navbar">
+            <li><a href="../index.html">Profil</a></li>
+            <li><a href="cv.html">Životopis </a></li>
+            <li><a href="map.html">Map</a></li>
+            <li><a href="schedule.html" aria-current="page">Schedule</a></li>
+            <li><a href="workspace.html">Workspace</a></li>
+            </ul>
+    </header>
+
+    <main>
+        <h1>Rozvrh</h1>
+        <h2>Modrá: prednášky, Zelená: cvičenia, Žltá: telesná</h2>
+        <div class="schedule-filters" role="group" aria-label="Zobraziť hodiny">
+            <button type="button" data-filter="all" class="is-active" aria-pressed="true">Všetko</button>
+            <button type="button" data-filter="lecture" aria-pressed="false">Prednášky</button>
+            <button type="button" data-filter="exercise" aria-pressed="false">Cvičenia</button>
+            <button type="button" data-filter="sport" aria-pressed="false">Telesná</button>
+        </div>
+        <p class="schedule-status" role="status" aria-live="polite"></p>
+        <p class="schedule-empty" role="status" aria-live="polite" hidden>Pre zvolený filter nie sú v rozvrhu žiadne hodiny.</p>
+
+        <div class="schedule-scroll">
+            <table class="schedule">
+                <caption>Týždenný rozvrh</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Deň</th>
+                        <th scope="col">7.00–7.50</th>
+                        <th scope="col">8.00–8.50</th>
+                        <th scope="col">9.00–9.50</th>
+                        <th scope="col">10.00–10.50</th>
+                        <th scope="col">11.00–11.50</th>
+                        <th scope="col">12.00–12.50</th>
+                        <th scope="col">13.00–13.50</th>
+                        <th scope="col">14.00–14.50</th>
+                        <th scope="col">15.00–15.50</th>
+                        <th scope="col">16.00–16.50</th>
+                        <th scope="col">17.00–17.50</th>
+                        <th scope="col">18.00–18.50</th>
+                        <th scope="col">19.00–19.50</th>
+                        <th scope="col">20.00–20.50</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Po</th>
+                        <td colspan="2"></td>
+                        <td colspan="2" class="exercise" data-day="1" data-hour="9"><span>Webové technológie 1</span></td>
+                        <td colspan="2"></td>
+                        <td colspan="2" class="exercise" data-day="1" data-hour="13"><span>Operačné systémy</span></td>
+                        <td colspan="2" class="lecture" data-day="1" data-hour="15"><span>Lineárna algebra 2</span></td>
+                        <td colspan="4"></td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <th scope="rowgroup" rowspan="2">Ut</th>
+                        <td></td>
+                        <td colspan="2" class="lecture" data-day="2" data-hour="8"><span>Analýza a zložitosť algoritmov</span></td>
+                        <td colspan="2" class="lecture" data-day="2" data-hour="10"><span>Diskrétna matematika</span></td>
+                        <td colspan="3"></td>
+                        <td colspan="2" class="lecture" data-day="2" data-hour="15"><span>Softvérové inžinierstvo</span></td>
+                        <td></td>
+                        <td class="exercise" data-day="2" data-hour="18"><span>Softvérové inžinierstvo</span></td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"></td>
+                        <td colspan="2" class="lecture" data-day="2" data-hour="10"><span>Webové technológie 1</span></td>
+                        <td colspan="9"></td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <th scope="row">St</th>
+                        <td></td>
+                        <td colspan="2" class="lecture" data-day="3" data-hour="8"><span>Operačné systémy</span></td>
+                        <td colspan="2" class="lecture" data-day="3" data-hour="10"><span>Analýza a zložitosť algoritmov</span></td>
+                        <td></td>
+                        <td colspan="2" class="lecture" data-day="3" data-hour="13"><span>Webové technológie 1</span></td>
+                        <td colspan="2"></td>
+                        <td colspan="2" class="exercise" data-day="3" data-hour="17"><span>Diskrétna matematika</span></td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Št</th>
+                        <td colspan="2"></td>
+                        <td colspan="2" class="sport" data-day="4" data-hour="9"><span>Telesná kultúra 5</span></td>
+                        <td class="exercise" data-day="4" data-hour="11"><span>Softvérové inžinierstvo</span></td>
+                        <td colspan="9"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Pi</th>
+                        <td colspan="2"></td>
+                        <td class="exercise" data-day="5" data-hour="9"><span>Analýza a zložitosť algoritmov</span></td>
+                        <td colspan="2" class="exercise" data-day="5" data-hour="10"><span>Lineárna algebra 2</span></td>
+                        <td colspan="9"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="semester-progress">
+            <label for="semester-bar">Uplynulo <span id="semester-percent">0 %</span> semestra</label>
+            <progress id="semester-bar" max="100" value="0">0 %</progress>
+            <p>15. 9. 2026 – 13. 2. 2027</p>
+        </div>
+    </main>
+
+    <footer>
+        <address>
+            <a href="mailto:xmojzist@stuba.sk">xmojzist@stuba.sk</a>
+        </address>
+        <p>2026 Tomáš Mojžiš</p>
+        <p>Zdroje: <a href="https://leafletjs.com/">Leaflet</a>, <a href="https://www.openstreetmap.org/">OpenStreetMap</a></p>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

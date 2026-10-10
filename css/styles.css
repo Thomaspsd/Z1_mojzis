@@ -1,0 +1,315 @@
+@font-face {
+    font-family: "Font";
+    src: url("../fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+}
+
+body {
+    font-family: "Font", sans-serif;
+    color: #101114;
+    margin: 0;
+}
+
+header, footer, .navbar, header h1 a, .map-controls, .map-points li {
+    display: flex;
+}
+
+header, footer, .navbar, header h1 a, .map-points li {
+    align-items: center;
+}
+
+footer, .navbar { justify-content: center; }
+.navbar, .interests ul, .map-points ul { list-style: none; padding: 0; }
+.navbar, footer p, header h1, .main-section h2 { margin: 0; }
+.navbar a, header h1 a { color: #101114; text-decoration: none; }
+.cv-article-left, .cv-article-right, .main-img, .main-section .button,
+.interests, .interests li, .cv-section img, .hotspot-image img,
+.hotspot__panel { border-radius: 15px; }
+
+header {
+    padding: 18px 4%;
+    border-bottom: 1px solid #eef0f3;
+    gap: 24px;
+    justify-content: space-between;
+}
+
+footer {
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    text-align: center;
+    padding: 10px 10px 24px;
+}
+
+footer address {
+    font-style: normal;
+}
+
+.navbar a {
+    padding: 12px 18px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.navbar a[aria-current="page"] {
+    background-color: #0052ff;
+    color: white;
+    border-radius: 30px;
+}
+
+.cv-section, .main-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+}
+
+.cv-article-left, .cv-article-right {
+    padding: 32px;
+}
+
+.cv-article-left{
+    background-color: #eef3ff;
+}
+
+.cv-article-right{
+    background-color: #f6f7f9;
+}
+
+main h1 {
+    font-size: 48px;
+    font-weight: 500;
+    margin: 0 0 36px;
+}
+
+main h2 {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 0 24px;
+}
+
+.cv-section h2, .interests h2 { font-size: 36px; }
+
+.cv-section ul { list-style: none; }
+
+.cv-section li, .cv-section p { 
+    margin: 0 0 24px; 
+}
+
+.cv-section img {
+    display: block;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+main {
+    width: 92%;
+    max-width: 1400px;
+    margin: 48px auto;
+}
+
+header h1 img {
+    width: 44px;
+    border-radius: 50%;
+}
+
+header h1 { font-size: 18px; }
+header h1 a { gap: 12px; }
+
+.header-subtitle {
+    color: #5b6472;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.main-section {
+    align-items: center;
+    column-gap: 64px;
+    margin-bottom: 64px;
+}
+
+.main-intro { max-width: 520px; }
+
+.main-img{
+    display: block;
+    width: 100%;
+    max-height: 693px;
+    object-fit: cover;
+}
+
+.main-section h1 {
+    font-size: 72px;
+}
+
+.main-section h2 { font-size: 16px; }
+
+.main-section p {
+    margin: 0 0 32px;
+}
+
+.main-section .button {
+    display: inline-block;
+    padding: 18px 26px;
+    background-color: #0052ff;
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.button:hover, .button:focus {
+    background-color: #003dcc;
+}
+
+.interests {
+    padding: 40px;
+    background-color: #f6f7f9;
+}
+
+.interests li { 
+    padding: 12px 20px;
+    margin-bottom: 12px;
+    background-color: #ffffff;
+    display: inline-block;
+}
+
+.interests aside { color: #003dcc; font-style: italic; }
+
+#map {
+    height: 650px;
+}
+
+.map-points { margin-top: 24px; }
+.map-controls { flex-wrap: wrap; gap: 16px; margin-bottom: 12px; }
+.map-controls label { display: grid; gap: 6px; }
+.map-controls select { max-width: 100%; padding: 8px; font: inherit; }
+.map-points h2 { margin-bottom: 12px; }
+.map-points li { gap: 12px; margin-bottom: 8px; }
+.map-points button { padding: 6px 10px; cursor: pointer; }
+
+.hotspot-image {
+    --dot-size: 2rem;
+    --color-surface: #ffffff;
+    --color-accent: #0052ff;
+    --color-brand: #003dcc;
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto 10rem;
+}
+
+.hotspot-image img {
+    display: block;
+    width: 100%;
+}
+
+.hotspot {
+    width: var(--dot-size);
+    height: var(--dot-size);
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    transform: translate(-50%, -50%);
+}
+
+.hotspot__dot {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 3px solid var(--color-surface);
+    border-radius: 50%;
+    background: var(--color-accent);
+}
+
+.hotspot__panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    box-sizing: border-box;
+    width: 16rem;
+    padding: 1rem;
+    background: var(--color-surface);
+    border-left: 4px solid var(--color-brand);
+    visibility: hidden;
+}
+
+.hotspot:is(:hover, :focus-within) { z-index: 10; }
+
+.hotspot:hover .hotspot__panel,
+.hotspot-image:not(:has(.hotspot:hover)) .hotspot:focus-within .hotspot__panel {
+    visibility: visible;
+}
+
+.hotspot--left .hotspot__panel {
+    left: auto;
+    right: 0;
+}
+
+.hotspot__panel h2 {
+    margin: 0 0 0.25rem;
+    font-size: 1rem;
+}
+
+.hamburger { display: none; }
+
+@media (max-width: 768px) {
+
+    .cv-section, .main-section { grid-template-columns: 1fr; }
+    .main-section h1 { font-size: 48px; }
+
+    .hotspot { position: static; width: auto; height: 0; transform: none; }
+
+    .hotspot__dot {
+        position: absolute;
+        width: var(--dot-size);
+        height: var(--dot-size);
+        left: var(--x);
+        top: var(--y);
+        transform: translate(-50%, -50%);
+    }
+
+    .hotspot .hotspot__panel,
+    .hotspot:is(:hover, :focus-within) .hotspot__panel {
+        left: 0;
+        right: auto;
+        width: 100%;
+        height: 9rem;
+        overflow: auto;
+        visibility: hidden;
+    }
+
+    .hotspot:focus-within .hotspot__panel,
+    .hotspot-image:not(:has(.hotspot:focus-within)) .hotspot:first-of-type .hotspot__panel {
+        visibility: visible;
+    }
+
+    header { flex-wrap: wrap; gap: 12px; }
+
+    .hamburger {
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        position: relative;
+        width: 44px;
+        height: 44px;
+        font-size: 28px;
+    }
+
+    .hamburger input {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    header .navbar {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    header:has(.hamburger input:checked) .navbar { display: flex; }
+    header .navbar a { display: block; }
+}

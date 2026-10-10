@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomáš Mojžiš - Map</title>
+    <link rel="icon" type="image/jpeg" href="../img/pfp.jpg">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <header>
+        <h1><a href="../index.html"><img src="../img/pfp.jpg"><span>Tomáš Mojžiš</span><small class="header-subtitle">študent FEI</small></a></h1>
+            <label class="hamburger">
+                <input type="checkbox">
+                <span aria-hidden="true">&#9776;</span>
+            </label>
+            <ul class="navbar">
+            <li><a href="../index.html">Profil</a></li>
+            <li><a href="cv.html">Životopis </a></li>
+            <li><a href="map.html" aria-current="page">Map</a></li>
+            <li><a href="schedule.html">Schedule</a></li>
+            <li><a href="workspace.html">Workspace</a></li>
+            </ul>
+    </header>
+
+    <main>
+        <h1>Mapa</h1>
+        <h2 id="map-distance" role="status">Vyber bod a cieľ na výpočet vzdialenosti.</h2>
+        <div class="map-controls">
+            <label>Bod
+                <select id="map-start"><option value="">Vyber bod</option></select>
+            </label>
+            <label>Cieľ
+                <select id="map-target">
+                    <option value="school">FEI STU</option>
+                    <option value="home">Domov</option>
+                </select>
+            </label>
+        </div>
+        <div id="map"></div>
+        <section class="map-points">
+            <h2>Pridané body</h2>
+            <p id="map-points-empty">Zatiaľ si nepridal žiadny bod. Kliknutím na mapu pridáš vlastný bod a pomenuješ ho.</p>
+            <ul id="map-points-list"></ul>
+        </section>
+    </main>
+    <footer>
+        <address>
+            <a href="mailto:xmojzist@stuba.sk">xmojzist@stuba.sk</a>
+        </address>
+        <p>2026 Tomáš Mojžiš</p>
+        <p>Zdroje: <a href="https://leafletjs.com/">Leaflet</a>, <a href="https://www.openstreetmap.org/">OpenStreetMap</a></p>
+    </footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="../js/script.js"></script>
+</body>
+</html>
