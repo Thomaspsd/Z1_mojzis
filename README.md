@@ -1,5 +1,5 @@
 Tomáš Mojžiš - 9.00 cviko
-https://webte1.fei.stuba.sk/~xmojzist/
+https://webte1.fei.stuba.sk/~xmojzist/Z1_mojzis
 
 Všetky použite fotografie sú moje
 Font Licencia: /fonts/OFL.txt
